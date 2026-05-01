@@ -1,0 +1,306 @@
+{
+  "metadata": {
+    "title": "Aurasea | The Daily Intelligent Partner for Thai Small Business Owners",
+    "description": "Aurasea builds operational intelligence software for Thai small business owners. Transform daily operations data into smart decisions, every morning."
+  },
+  "header": {
+    "cta": "Partner with us"
+  },
+  "navigation": {
+    "products": "Products",
+    "about": "About",
+    "partners": "Partners",
+    "press": "Press",
+    "careers": "Careers",
+    "contact": "Contact"
+  },
+  "homepage": {
+    "hero": {
+      "headline": "The daily intelligent partner for Thai small business owners",
+      "subheadline": "Aurasea transforms your operational data into smart decisions, every morning",
+      "ctaPrimary": "Explore Our Products",
+      "ctaSecondary": "Partner with Us"
+    },
+    "problem": {
+      "title": "Operational complexity, simplified",
+      "p1": "Thai small business owners navigate enormous daily complexity — sales, costs, staff, inventory, competitors — without tools that help them see the whole picture and act with confidence.",
+      "p2": "We built Aurasea because SMB owners deserve the same caliber of intelligence tools that large enterprises have always had.",
+      "p3": "Not just dashboards — a partner that tells you every morning what matters today."
+    },
+    "products": {
+      "title": "Our Products",
+      "subtitle": "One platform, three products, built for Thai small businesses",
+      "auraseaos": {
+        "title": "Aurasea OS",
+        "description": "Operational intelligence platform for SMB owners",
+        "cta": "Learn more"
+      },
+      "ratedesk": {
+        "title": "RateDesk.ai",
+        "description": "AI revenue management for independent hotels and resorts",
+        "cta": "Learn more"
+      },
+      "menudesk": {
+        "title": "MenuDesk.ai",
+        "description": "Operational intelligence for cafes, bakeries, and restaurants",
+        "cta": "Learn more",
+        "badge": "Coming Q4 2026"
+      }
+    },
+    "founder": {
+      "title": "Why Aurasea",
+      "intro": "Aurasea is founded by an academic, financial professional, and business owner who deeply understands the challenges of Thai SMBs.",
+      "bio": "Bovorn Vichiansin is the founder of Aurasea. With a PhD in Economics, he previously held positions at the World Bank, Deloitte Consulting, and Merrill Lynch (Bank of America) in New York. He teaches at Chulalongkorn University's Master of Financial Engineering program and manages Crystal Resort and Cafe — both serving as Aurasea's design partners. He built Aurasea because the operational tools available to Thai small business owners weren't keeping pace with what's possible with modern AI."
+    },
+    "regional": {
+      "title": "Built in Thailand, for Southeast Asia",
+      "p1": "We're headquartered in Bangkok and build for Thailand first, then expand across Southeast Asia from 2027.",
+      "p2": "We understand that SMBs in this region operate on LINE more than email, in cash more than credit, and as family businesses more than startups. Our products are designed for that reality."
+    },
+    "footerCta": {
+      "title": "Ready to transform how you run your business?",
+      "subtitle": "Discover how Aurasea can support your operations",
+      "cta": "Explore Products"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Aurasea"
+    },
+    "story": {
+      "title": "The Founder's Story",
+      "p1": "Bovorn Vichiansin began his academic journey in Electrical Engineering before pursuing graduate studies in Economics and Finance, ultimately earning his PhD.",
+      "p2": "His career took him through global organizations — at the World Bank in Washington DC, then Deloitte Consulting and Merrill Lynch (Bank of America) in New York City, working in both the hedge fund and wealth management businesses.",
+      "p3": "Returning to Thailand, he became a professor in Chulalongkorn University's Master of Financial Engineering program while overseeing Crystal Resort & Cafe (81 rooms).",
+      "p4": "In running his own businesses, he saw a clear gap — the sophisticated tools available to large enterprises were inaccessible to typical SMBs. Aurasea was born to close that gap."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "p1": "We believe Thai small business owners deserve world-class tools — not enterprise software stripped down for them.",
+      "p2": "We build products that start from a genuine understanding of small businesses in this region — how they operate, how they communicate, and the unique challenges they face."
+    },
+    "name": {
+      "title": "Why 'Aurasea'",
+      "p1": "Aurasea combines 'aura' (radiance) and 'sea' (ocean) — the radiance of light guiding through the vast ocean of business complexity.",
+      "p2": "It reflects what we do — illuminating what matters most each day, so business owners can navigate with confidence."
+    },
+    "team": {
+      "title": "Our Team",
+      "founder": {
+        "name": "Bovorn Vichiansin",
+        "role": "Founder & CEO"
+      }
+    },
+    "location": {
+      "title": "Where We're Based",
+      "summary": "We're headquartered in Bangkok, with active operations in Nakhon Ratchasima where Crystal Resort and our cafe serve as Aurasea's design partners.",
+      "headquarters": "Headquarters: Bangkok — where our business operations, partnership conversations, and Chula MFE academic affiliations are based.",
+      "operations": "Operations: Nakhon Ratchasima — where Crystal Resort and our cafe operate as Aurasea's design partners and dogfooding environments. Every feature ships first to production at these locations before reaching paying customers.",
+      "intent": "This dual presence is intentional. Bangkok gives us access to Thailand's tech ecosystem, talent pool, and partnership networks. Nakhon Ratchasima gives us direct, daily exposure to the operational realities of running real SMBs — which keeps our product honest."
+    }
+  },
+  "products": {
+    "hero": {
+      "title": "Our Products",
+      "subtitle": "One platform, three products, for Thai small businesses"
+    },
+    "auraseaos": {
+      "title": "Aurasea OS",
+      "tagline": "Operational Intelligence Platform",
+      "description": "The core Aurasea platform that aggregates your business operations data and generates daily insights — sales summaries, cost analysis, alerts, and recommendations delivered to your LINE every morning.",
+      "audience": "For: SMB owners who want a unified view of their operations",
+      "cta": "Visit auraseaos.com"
+    },
+    "ratedesk": {
+      "title": "RateDesk.ai",
+      "tagline": "AI Revenue Management",
+      "description": "AI-powered revenue management for independent hotels and resorts — recommends room rates, benchmarks competitors, and forecasts revenue. Integrates with Easyfo, Cloudbeds, SiteMinder, and more.",
+      "audience": "For: Independent hotel and resort owners (30-150 rooms)",
+      "cta": "Visit ratedesk.ai"
+    },
+    "menudesk": {
+      "title": "MenuDesk.ai",
+      "tagline": "F&B Operational Intelligence",
+      "description": "Operations intelligence for cafes, bakeries, and restaurants — menu engineering, ingredient cost tracking, waste management, and staff planning. Integrates with FoodStory, Loyverse, StoreHub.",
+      "audience": "For: Small to mid-sized cafes, bakeries, and restaurants",
+      "cta": "Visit menudesk.ai",
+      "badge": "Coming Q4 2026"
+    }
+  },
+  "partners": {
+    "hero": {
+      "title": "Partner with Aurasea",
+      "subtitle": "Building value together for Thai small businesses"
+    },
+    "why": {
+      "title": "Why Partner with Us",
+      "p1": "Aurasea is building a growing customer base of SMBs in Thailand. Partnership with us means access to a targeted customer network.",
+      "p2": "We focus on technical excellence and great customer service, ensuring our partners earn meaningful returns from collaboration."
+    },
+    "types": {
+      "title": "Partnership Types",
+      "integration": {
+        "title": "Integration Partners",
+        "description": "PMS, POS, channel manager, and other systems wanting to integrate with Aurasea OS to extend value to their customers."
+      },
+      "distribution": {
+        "title": "Distribution Partners",
+        "description": "Industry associations, business consultants, and other networks that can introduce Aurasea products to their members."
+      },
+      "technology": {
+        "title": "Technology Partners",
+        "description": "Data providers, infrastructure providers, and tooling makers that can enhance Aurasea's capabilities."
+      }
+    },
+    "cta": {
+      "title": "Interested in Partnership?",
+      "subtitle": "Reach out to discuss collaboration opportunities",
+      "email": "partnerships@aurasea.ai"
+    }
+  },
+  "press": {
+    "hero": {
+      "title": "Press & Media"
+    },
+    "inquiries": {
+      "title": "For Press",
+      "description": "Reach our press team at",
+      "email": "press@aurasea.ai"
+    },
+    "facts": {
+      "title": "Quick Facts",
+      "founded": "Founded: 2026",
+      "headquarters": "Headquarters: Bangkok, Thailand",
+      "operations": "Operations: Nakhon Ratchasima (design partner location)",
+      "founder": "Founder: Bovorn Vichiansin",
+      "products": "Products: Aurasea OS, RateDesk.ai (available), MenuDesk.ai (Q4 2026)",
+      "market": "Market: Thailand (launch), Southeast Asia (expansion 2027+)"
+    },
+    "assets": {
+      "title": "Brand Assets",
+      "description": "Download logos and brand resources",
+      "comingSoon": "Additional assets coming soon"
+    },
+    "recent": {
+      "title": "Recent Press",
+      "empty": "No press yet — please check back soon"
+    }
+  },
+  "careers": {
+    "hero": {
+      "title": "Careers at Aurasea"
+    },
+    "current": {
+      "title": "Open Positions",
+      "p1": "We're not currently hiring for specific roles.",
+      "p2": "However, if you have skills and passion for building tools for Thai small business owners, we'd love to hear from you."
+    },
+    "reach": {
+      "title": "Reach Out",
+      "description": "Send your background and tell us how you could contribute to building Aurasea",
+      "email": "careers@aurasea.ai"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact Us"
+    },
+    "emails": {
+      "title": "Email Addresses",
+      "general": {
+        "label": "General",
+        "email": "hello@aurasea.ai"
+      },
+      "partnerships": {
+        "label": "Partnerships",
+        "email": "partnerships@aurasea.ai"
+      },
+      "press": {
+        "label": "Press",
+        "email": "press@aurasea.ai"
+      },
+      "careers": {
+        "label": "Careers",
+        "email": "careers@aurasea.ai"
+      },
+      "billing": {
+        "label": "Billing",
+        "email": "billing@aurasea.ai"
+      },
+      "support": {
+        "label": "Customer Support",
+        "email": "support@aurasea.ai",
+        "note": "For product support, please use the support page on the relevant product site"
+      }
+    },
+    "office": {
+      "title": "Office",
+      "headquarters": "Headquarters: Bangkok, Thailand",
+      "designPartner": "Design Partner Operations: Nakhon Ratchasima",
+      "description": "We're a distributed Thai team with our primary business operations in Bangkok and active product development happening at our design partner locations in Nakhon Ratchasima.",
+      "meetingCta": "Schedule a meeting in Bangkok: Contact",
+      "meetingEmail": "partnerships@aurasea.ai"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "draftNotice": "This privacy policy will be finalized prior to launch.",
+      "sections": {
+        "collection": "Data Collection",
+        "use": "Use of Data",
+        "sharing": "Data Sharing",
+        "retention": "Data Retention",
+        "rights": "Your Rights",
+        "contact": "Contact"
+      }
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "draftNotice": "These terms are a draft and will be finalized prior to launch.",
+      "sections": {
+        "acceptance": "Acceptance",
+        "services": "Our Services",
+        "limitations": "Limitations of Liability",
+        "termination": "Termination",
+        "law": "Governing Law (Thailand)"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "The daily intelligent partner for Thai small business owners",
+    "address": {
+      "companyName": "Aurasea Co., Ltd.",
+      "headquarters": "Headquarters: Bangkok, Thailand",
+      "operations": "Operations: Nakhon Ratchasima"
+    },
+    "copyright": "© 2026 Aurasea Co., Ltd. All rights reserved.",
+    "company": "Company",
+    "products": "Products",
+    "resources": "Resources",
+    "legal": "Legal",
+    "newsletter": {
+      "label": "Get updates from Aurasea",
+      "placeholder": "Your email",
+      "submit": "Subscribe"
+    },
+    "links": {
+      "about": "About",
+      "products": "Products",
+      "partners": "Partners",
+      "press": "Press",
+      "careers": "Careers",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  }
+}

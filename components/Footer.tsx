@@ -42,7 +42,6 @@ export function Footer() {
                 {t("address.companyName")}
               </p>
               <p>{t("address.headquarters")}</p>
-              <p>{t("address.operations")}</p>
             </div>
             <div className="mt-6">
               <NewsletterSignup />

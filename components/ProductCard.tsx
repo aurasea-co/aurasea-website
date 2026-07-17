@@ -10,6 +10,8 @@ type ProductCardProps = {
   href: string;
   external?: boolean;
   badge?: string;
+  plan?: string;
+  planNote?: string;
 };
 
 export function ProductCard({
@@ -19,6 +21,8 @@ export function ProductCard({
   href,
   external,
   badge,
+  plan,
+  planNote,
 }: ProductCardProps) {
   return (
     <Card className="flex h-full flex-col">
@@ -26,7 +30,17 @@ export function ProductCard({
         <h3 className="text-xl font-semibold">{title}</h3>
         {badge && <Badge variant="amber">{badge}</Badge>}
       </div>
-      <p className="mb-6 flex-grow text-brand-muted">{description}</p>
+      <p className="mb-4 flex-grow text-brand-muted">{description}</p>
+      {plan && (
+        <div className="mb-4 border-t border-brand-border pt-4">
+          <span className="inline-block rounded-full bg-brand-green-light px-3 py-1 text-xs font-semibold text-brand-green-dark">
+            {plan}
+          </span>
+          {planNote && (
+            <p className="mt-2 text-xs text-brand-muted">{planNote}</p>
+          )}
+        </div>
+      )}
       <Button
         href={href}
         external={external}

@@ -33,12 +33,15 @@
       "auraseaos": {
         "title": "Aurasea OS",
         "description": "Operational intelligence platform for SMB owners",
-        "cta": "Learn more"
+        "cta": "Visit auraseaos.com",
+        "plan": "Free forever"
       },
       "ratedesk": {
         "title": "RateDesk.ai",
         "description": "AI revenue management for independent hotels and resorts",
-        "cta": "Learn more"
+        "cta": "Visit ratedesk.ai",
+        "plan": "From ฿575 / branch / month (billed annually)",
+        "planNote": "First 50 Founding Members — price locked for life + 90-day free trial"
       },
       "menudesk": {
         "title": "MenuDesk.ai",
@@ -109,14 +112,17 @@
       "tagline": "Operational Intelligence Platform",
       "description": "The core Aurasea platform that aggregates your business operations data and generates daily insights — sales summaries, cost analysis, alerts, and recommendations delivered to your LINE every morning.",
       "audience": "For: SMB owners who want a unified view of their operations",
-      "cta": "Visit auraseaos.com"
+      "cta": "Visit auraseaos.com",
+      "plan": "Free forever"
     },
     "ratedesk": {
       "title": "RateDesk.ai",
       "tagline": "AI Revenue Management",
       "description": "AI-powered revenue management for independent hotels and resorts — recommends room rates, benchmarks competitors, and forecasts revenue. Integrates with Easyfo, Cloudbeds, SiteMinder, and more.",
       "audience": "For: Independent hotel and resort owners (30-150 rooms)",
-      "cta": "Visit ratedesk.ai"
+      "cta": "Visit ratedesk.ai",
+      "plan": "From ฿575 / branch / month (billed annually)",
+      "planNote": "First 50 Founding Members — price locked for life + 90-day free trial"
     },
     "menudesk": {
       "title": "MenuDesk.ai",

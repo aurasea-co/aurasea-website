@@ -13,6 +13,8 @@ const config: Config = {
           "navy-dark": "#072d3d",
           green: "#10b981",
           "green-dark": "#059669",
+          "green-light": "#d1fae5",
+          border: "#e5e7eb",
           purple: "#7c3aed",
           red: "#dc2626",
           amber: "#f59e0b",

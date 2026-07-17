@@ -101,13 +101,18 @@ export default function HomePage({
             title={tProducts("auraseaos.title")}
             description={tProducts("auraseaos.description")}
             cta={tProducts("auraseaos.cta")}
-            href="/products"
+            href="https://auraseaos.com"
+            external
+            plan={tProducts("auraseaos.plan")}
           />
           <ProductCard
             title={tProducts("ratedesk.title")}
             description={tProducts("ratedesk.description")}
             cta={tProducts("ratedesk.cta")}
-            href="/products"
+            href="https://ratedesk.ai"
+            external
+            plan={tProducts("ratedesk.plan")}
+            planNote={tProducts("ratedesk.planNote")}
           />
           <ProductCard
             title={tProducts("menudesk.title")}

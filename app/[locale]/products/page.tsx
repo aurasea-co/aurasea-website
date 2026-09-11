@@ -8,6 +8,7 @@ import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
 import { buildPageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n";
+import { showPricing } from "@/lib/pricing-visibility";
 
 type ProductKey = "auraseaos" | "ratedesk" | "menudesk";
 
@@ -38,7 +39,9 @@ const pricedProducts: ProductKey[] = ["auraseaos", "ratedesk"];
 function ProductBlock({ productKey }: { productKey: ProductKey }) {
   const t = useTranslations(`products.${productKey}`);
   const isUpcoming = upcomingProducts.includes(productKey);
-  const hasPlan = pricedProducts.includes(productKey);
+  // No plan badge while pricing is off — the string is stripped upstream,
+  // and an empty pill is worse than no pill.
+  const hasPlan = showPricing() && pricedProducts.includes(productKey);
   return (
     <Card className="md:p-10">
       <div className="mb-2 flex items-center gap-3">

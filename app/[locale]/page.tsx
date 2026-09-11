@@ -9,6 +9,7 @@ import { FoundersBio } from "@/components/FoundersBio";
 import { JsonLd } from "@/components/JsonLd";
 import { buildPageMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
 import type { Locale } from "@/i18n";
+import { showPricing } from "@/lib/pricing-visibility";
 
 export async function generateMetadata({
   params: { locale },
@@ -103,7 +104,7 @@ export default function HomePage({
             cta={tProducts("auraseaos.cta")}
             href="https://auraseaos.com"
             external
-            plan={tProducts("auraseaos.plan")}
+            plan={showPricing() ? tProducts("auraseaos.plan") : undefined}
           />
           <ProductCard
             title={tProducts("ratedesk.title")}
@@ -111,8 +112,12 @@ export default function HomePage({
             cta={tProducts("ratedesk.cta")}
             href="https://ratedesk.ai"
             external
-            plan={tProducts("ratedesk.plan")}
-            planNote={tProducts("ratedesk.planNote")}
+            {...(showPricing()
+              ? {
+                  plan: tProducts("ratedesk.plan"),
+                  planNote: tProducts("ratedesk.planNote"),
+                }
+              : {})}
           />
           <ProductCard
             title={tProducts("menudesk.title")}

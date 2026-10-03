@@ -1,46 +1,68 @@
 #!/usr/bin/env node
-// Fails if a price we charge reaches the built output while pricing is off.
+// Fails if a price, a "free" claim or a trial length reaches the built output.
 //
-// Run after `npm run build`. Scans the SERVED artefacts — rendered HTML and
-// client bundles — not the source, because the leak this exists to catch was
-// invisible in source: every price component was correctly gated and
-// next-intl still serialised the whole message tree into the page, leaving
-// ฿890 in view-source on three pages.
+// MD1 (Oct 2026): the partner testing period has started and pricing is
+// REMOVED from the marketing sites — not hidden behind a flag. A price in the
+// built HTML is a published price, so this scans the SERVED artefacts
+// (rendered HTML, RSC payloads, client bundles), not the source: next-intl
+// serialises message trees into the page, and that is where leaks hide.
 //
-// ── Why it is not "any ฿ followed by digits" ─────────────────────────────
+// Rules:
+//   1. A figure we charge (current or retired) next to ฿ / THB / บาท.
+//      Not "any ฿ followed by digits": these sites legitimately show baht
+//      that is not our price (a hotel's room rates in a phone mockup, a
+//      delivery-commission worked example). Those exact strings are declared
+//      per site in check-no-pricing.config.json → "allow".
+//   2. "ฟรี" and the word "free" (any case).
+//   3. A trial length: "ทดลอง… 90 วัน", "90-day trial", "trial … 60 days".
+//   4. A link to a pricing section or page: "#pricing", "/pricing".
+//   5. Structured-data prices: JSON-LD "offers" / "price" / "priceCurrency".
 //
-// Because that is wrong, and measurably so. These sites legitimately show
-// baht that is not our price:
-//
-//   auraseaos.com  ฿1,490 / ฿18,400 / ฿990 — a morning-brief mockup showing
-//                  a HOTEL's own room rates. ฿990 there is a Superior room,
-//                  and it collides exactly with our bundle price.
-//   menudesk.ai    ฿100 / ฿35 / ฿65 / ฿155 — the delivery-commission worked
-//                  example, which is the site's central argument.
-//   app            ฿1,073 / ฿980 — the customer's own revenue figures.
-//
-// A guard that cannot tell those from a price list would have to be muted,
-// and a muted guard protects nothing. So it matches OUR figures, and each
-// site declares the demo strings that legitimately contain them.
+// Rules 2–5 are excused only by an exact substring in "allowText" (e.g. the
+// unchanged terms page's "Free trials" section) or for files whose path
+// contains one of "skipPaths". Keep both lists minimal and explicit.
 
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { join, extname } from 'node:path'
 
-/** Prices we charge, current and retired. Retired ones matter because the
- *  point is that no price is visible, not that today's price is not. */
-const FIGURES = [890, 990, 199, 399, 99, 590, 290, 390, 190]
+/** Prices we charge, current and retired. */
+const FIGURES = [890, 990, 399, 199, 99, 590, 575, 290, 390, 190]
 
-/** Exact substrings that legitimately contain one of the figures above.
- *  Declared per site in check-no-pricing.config.json; absent means none. */
-let ALLOW = []
+let config = {}
 try {
-  ALLOW = JSON.parse(readFileSync('check-no-pricing.config.json', 'utf8')).allow ?? []
+  config = JSON.parse(readFileSync('check-no-pricing.config.json', 'utf8'))
 } catch {
   /* no config — allow nothing */
 }
+const ALLOW = config.allow ?? []
+const ALLOW_TEXT = config.allowText ?? []
+const SKIP_PATHS = config.skipPaths ?? []
+
+const RULES = [
+  ...FIGURES.map((n) => ({
+    name: `price ${n}`,
+    re: new RegExp(
+      `(?:฿|THB\\s*|บาท\\s*)${n}(?![0-9])|(?<![0-9,.])${n}\\s*(?:บาท|THB)`,
+      'g',
+    ),
+    allow: ALLOW,
+    text: false,
+  })),
+  ...[
+    { name: 'ฟรี', re: /ฟรี/g },
+    { name: 'free', re: /\bfree\b/gi },
+    { name: 'trial length (th)', re: /ทดลอง[^\s"<]{0,12}\s*\d+\s*วัน/g },
+    {
+      name: 'trial length (en)',
+      re: /\d+[\s-]*days?[\s-]+(?:free[\s-]+)?trial|trial[^.<"]{0,30}?\d+\s*days?/gi,
+    },
+    { name: 'pricing link', re: /#pricing\b|(?<![\w[\]-])\/(?:(?:en|th)\/)?pricing(?![\w-])/g },
+    { name: 'JSON-LD price', re: /\\?"(?:offers|price|priceCurrency)\\?"\s*:/g },
+  ].map((r) => ({ ...r, allow: ALLOW_TEXT, text: true })),
+]
 
 const DIRS = ['.next/server/app', '.next/static']
-const EXT = new Set(['.html', '.js', '.json', '.txt', '.rsc'])
+const EXT = new Set(['.html', '.js', '.json', '.txt', '.rsc', '.body', '.meta'])
 
 function* files(dir) {
   let entries
@@ -62,14 +84,17 @@ for (const dir of DIRS) {
   for (const f of files(dir)) {
     scanned++
     const text = readFileSync(f, 'utf8')
-    for (const n of FIGURES) {
-      // ฿890 or THB 890, not 8901 and not 1890.
-      const re = new RegExp(`(?:฿|THB\\s*)${n}(?![0-9])`, 'g')
+    const skipText = SKIP_PATHS.some((s) => f.includes(s))
+    for (const rule of RULES) {
+      if (rule.text && skipText) continue
+      rule.re.lastIndex = 0
       let m
-      while ((m = re.exec(text))) {
+      while ((m = rule.re.exec(text))) {
         const around = text.slice(Math.max(0, m.index - 90), m.index + 90)
-        if (ALLOW.some((a) => around.includes(a))) continue
-        offences.push(`${f}  ฿${n}  …${around.replace(/\s+/g, ' ').slice(0, 120)}…`)
+        if (rule.allow.some((a) => around.includes(a))) continue
+        offences.push(
+          `${f}  [${rule.name}] "${m[0]}"  …${around.replace(/\s+/g, ' ').slice(0, 140)}…`,
+        )
         break
       }
     }
@@ -82,11 +107,13 @@ if (scanned === 0) {
 }
 
 if (offences.length > 0) {
-  console.error(`\n✗ ${offences.length} price(s) reached the built output while pricing is off:\n`)
-  for (const o of offences.slice(0, 20)) console.error('  ' + o)
-  console.error('\n  Set NEXT_PUBLIC_SHOW_PRICING=true only when pricing is announced.')
-  console.error('  A figure that is a product DEMO, not our price, belongs in')
-  console.error('  check-no-pricing.config.json — with the surrounding text, not the bare number.\n')
+  console.error(`\n✗ ${offences.length} price / free / trial / pricing-link offence(s) in the built output:\n`)
+  for (const o of offences.slice(0, 30)) console.error('  ' + o)
+  console.error('\n  Pricing is removed from the marketing sites during the partner testing period.')
+  console.error('  A figure or word that is a product DEMO or unchanged legal text, not our price,')
+  console.error('  belongs in check-no-pricing.config.json — with the surrounding text, not the bare word.\n')
   process.exit(1)
 }
-console.log(`✓ no pricing in the built output (${scanned} files scanned, ${FIGURES.length} figures)`)
+console.log(
+  `✓ no pricing, "free" or trial claims in the built output (${scanned} files scanned, ${RULES.length} rules)`,
+)

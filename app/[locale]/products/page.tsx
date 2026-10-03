@@ -8,7 +8,6 @@ import { Button } from "@/components/Button";
 import { Badge } from "@/components/Badge";
 import { buildPageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n";
-import { showPricing } from "@/lib/pricing-visibility";
 
 type ProductKey = "auraseaos" | "ratedesk" | "menudesk";
 
@@ -34,14 +33,9 @@ export async function generateMetadata({
   });
 }
 
-const pricedProducts: ProductKey[] = ["auraseaos", "ratedesk"];
-
 function ProductBlock({ productKey }: { productKey: ProductKey }) {
   const t = useTranslations(`products.${productKey}`);
   const isUpcoming = upcomingProducts.includes(productKey);
-  // No plan badge while pricing is off — the string is stripped upstream,
-  // and an empty pill is worse than no pill.
-  const hasPlan = showPricing() && pricedProducts.includes(productKey);
   return (
     <Card className="md:p-10">
       <div className="mb-2 flex items-center gap-3">
@@ -53,16 +47,6 @@ function ProductBlock({ productKey }: { productKey: ProductKey }) {
       <h2 className="mb-4 text-3xl font-bold">{t("title")}</h2>
       <p className="mb-4 text-lg text-brand-body">{t("description")}</p>
       <p className="mb-6 text-sm text-brand-muted">{t("audience")}</p>
-      {hasPlan && (
-        <div className="mb-6 flex flex-wrap items-center gap-3 border-t border-brand-border pt-6">
-          <span className="inline-block rounded-full bg-brand-green-light px-4 py-1.5 text-sm font-semibold text-brand-green-dark">
-            {t("plan")}
-          </span>
-          {productKey === "ratedesk" && (
-            <p className="text-sm text-brand-muted">{t("planNote")}</p>
-          )}
-        </div>
-      )}
       <Button href={productLinks[productKey]} variant="primary" external>
         {t("cta")} →
       </Button>

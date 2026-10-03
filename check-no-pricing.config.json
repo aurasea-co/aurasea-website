@@ -1,4 +1,6 @@
 {
-  "_why": "No product-demo baht on this site.",
-  "allow": []
+  "_why": "No product-demo baht and no legal 'free trial' text on this site (MD1, Oct 2026).",
+  "allow": [],
+  "allowText": [],
+  "skipPaths": []
 }
